@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.cookie('abcd', '1234', { sameSite: 'none', secure: true });
-    res.render('index');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/read', (req, res) => {
