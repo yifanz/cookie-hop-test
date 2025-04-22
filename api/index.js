@@ -6,6 +6,10 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
+app.use((req, res, next) => {
+    res.removeHeader('X-Frame-Options');
+    next();
+});
 
 app.get('/', (req, res) => {
     res.cookie('abcd', '1234', { sameSite: 'none', secure: true });
