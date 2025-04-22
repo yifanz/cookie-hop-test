@@ -7,6 +7,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', 'frame-ancestors *');
     res.removeHeader('X-Frame-Options');
     next();
 });
